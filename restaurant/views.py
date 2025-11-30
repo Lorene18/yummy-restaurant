@@ -2,10 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello")
 def home(request):
-    return HttpResponse("Hello from Restaurant app!")
+    return render(request, 'restaurant/index.html')
 def gallery(request):
     return render(request,'restaurant/gallery.html')
 def contact_form(request):

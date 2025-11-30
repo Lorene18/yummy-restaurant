@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Testimonials – Yummy Restaurant{% endblock %}
+
+{% block content %}
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials section light-background">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>TESTIMONIALS</h2>
+    <p>What Are They <span class="description-title">Saying About Us</span></p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="swiper init-swiper">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          }
+        }
+      </script>
+
+      <div class="swiper-wrapper">
+
+        {% for t in testimonials %}
+        <div class="swiper-slide">
+          <div class="testimonial-item">
+            <div class="row gy-4 justify-content-center">
+
+              <div class="col-lg-6">
+                <div class="testimonial-content">
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>{{ t.message }}</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                  <h3>{{ t.name }}</h3>
+                </div>
+              </div>
+
+              <div class="col-lg-2 text-center">
+                {% if t.photo %}
+                  <img src="{{ t.photo.url }}" class="img-fluid testimonial-img" alt="{{ t.name }}">
+                {% else %}
+                  <img src="{% static 'assets/img/default-user.png' %}" class="img-fluid testimonial-img" alt="No photo">
+                {% endif %}
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  new Swiper(".init-swiper", {
+    loop: true,
+    speed: 600,
+    autoplay: { delay: 5000 },
+    slidesPerView: "auto",
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  });
+});
+</script>
+
+
+</section>
+
+{% endblock %}
