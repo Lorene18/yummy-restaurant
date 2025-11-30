@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!czioxd5l=boge4e^(du65hnbcn#l4cs1w0yhr*5k=25feu(f!'
+SECRET_KEY = 'django-insecure-r#m&vj0k3ff8*#3e_(ky6_1usl+0yq0@*xxkwuz7=2p-jak*=j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,9 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant',
-    'chefs_testimonials',
-
-    
 ]
 
 MIDDLEWARE = [
@@ -58,7 +56,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR /  'templates' ],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,7 +67,8 @@ TEMPLATES = [
         },
     },
 ]
-
+STATIC_URL='/static/'
+STATICFILES_DIRS= [os.path.join(BASE_DIR,'static')]
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -120,16 +119,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
