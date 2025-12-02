@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Treats Restaurant{% endblock %}
+{% block content %}
+
+    {% include 'hero.html'%}
+
+    {% include 'about.html' %}
+    {% include 'whyus.html' %}
+    {% include 'menu.html' %}
+    {% include 'gallery.html' %}
+    {%include 'testimonials.html' %}
+    
+    {% include 'stats.html' %}
+
+{% endblock %}
