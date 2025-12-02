@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add / Edit Item</title>
+</head>
+<body>
+
+<h1>{{ form.instance.pk|yesno:"Edit Menu Item,Add Menu Item" }}</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<p><a href="{% url 'menu:list' %}">Back</a></p>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ item.name }}</title>
+</head>
+<body>
+
+<h1>{{ item.name }}</h1>
+<p>Category: {{ item.get_category_display }}</p>
+<p>Price: ${{ item.price }}</p>
+<p>{{ item.description }}</p>
+
+{% if item.image %}
+    <img src="{{ item.image.url }}" style="max-width:300px;">
+{% endif %}
+
+<p><a href="{% url 'menu:edit' item.pk %}">Edit</a></p>
+<p><a href="{% url 'menu:list' %}">Back to Menu</a></p>
+
+</body>
+</html>

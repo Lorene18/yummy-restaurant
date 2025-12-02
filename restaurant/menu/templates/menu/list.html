@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--<h1>Menu</h1>
+
+<nav>
+    <a href="{% url 'menu:list' %}">All</a>
+    <a href="?category=breakfast">Breakfast</a>
+    <a href="?category=lunch">Lunch</a>
+    <a href="?category=dinner">Dinner</a>
+    <a href="?category=dessert">Desserts</a>
+</nav>
+
+<ul>
+    {% for item in items %}
+        <li>
+            <a href="{% url 'menu:detail' item.pk %}">{{ item.name }}</a>
+            - ${{ item.price }}
+            {% if item.image %}
+                <div><img src="{{ item.image.url }}" style="max-width:120px;"></div>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No items found.</li>
+    {% endfor %}
+</ul>-->
+
+<div class="container mt-4">
+    <h1 class=" text-warning mb-4">Menu</h1>
+
+    <div class="btn-group mb-4">
+        <a class="btn btn-secondary" href="{% url 'menu:list' %}">All</a>
+        <a class="btn btn-secondary" href="?category=breakfast">Breakfast</a>
+        <a class="btn btn-secondary" href="?category=lunch">Lunch</a>
+        <a class="btn btn-secondary" href="?category=dinner">Dinner</a>
+        <a class="btn btn-secondary" href="?category=dessert">Desserts</a>
+    </div>
+
+    <div class="row">
+        {% for item in items %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">${{ item.price }}</p>
+                        <a href="{% url 'menu:detail' item.pk %}" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<a href="{% url 'menu:add' %}">Add New Item</a>
+
+</body>
+</html>
